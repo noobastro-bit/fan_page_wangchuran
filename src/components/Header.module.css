@@ -1,0 +1,98 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 80;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 1.15rem var(--pad);
+  transition: background-color 0.4s var(--ease), border-color 0.4s var(--ease),
+    padding 0.4s var(--ease);
+  border-bottom: 1px solid transparent;
+}
+
+.scrolled {
+  background: rgba(247, 245, 242, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom-color: var(--line);
+  padding-block: 0.8rem;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.65rem;
+}
+
+.zh {
+  font-size: 0.95rem;
+  letter-spacing: 0.16em;
+  line-height: 1;
+}
+
+.brandNote {
+  font-size: 0.58rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: clamp(0.9rem, 2.2vw, 2rem);
+}
+
+.nav a {
+  position: relative;
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  padding-block: 0.25rem;
+}
+
+.nav a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: var(--accent-deep);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.4s var(--ease);
+}
+
+.nav a:hover::after,
+.nav a:focus-visible::after {
+  transform: scaleX(1);
+}
+
+@media (max-width: 700px) {
+  .header {
+    background: rgba(247, 245, 242, 0.94);
+    backdrop-filter: blur(8px);
+    border-bottom-color: var(--line);
+    padding-block: 0.8rem;
+  }
+
+  .brandNote {
+    display: none;
+  }
+
+  .nav {
+    gap: 0.9rem;
+  }
+
+  .nav a {
+    font-size: 0.56rem;
+    letter-spacing: 0.14em;
+  }
+}

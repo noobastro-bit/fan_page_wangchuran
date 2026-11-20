@@ -1,0 +1,49 @@
+.dot,
+.ring,
+.label {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 200;
+  pointer-events: none;
+  mix-blend-mode: difference;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #fff;
+}
+
+.ring {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid #fff;
+  opacity: 0;
+}
+
+.label {
+  color: #fff;
+  font-family: var(--sans);
+  font-size: 0.54rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+:global(html.lightbox-open) .dot,
+:global(html.lightbox-open) .ring,
+:global(html.lightbox-open) .label {
+  display: none;
+}
+
+@media (pointer: coarse), (prefers-reduced-motion: reduce) {
+  .dot,
+  .ring,
+  .label {
+    display: none;
+  }
+}

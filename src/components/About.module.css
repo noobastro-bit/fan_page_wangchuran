@@ -1,0 +1,204 @@
+.section {
+  position: relative;
+  padding-block: clamp(5.5rem, 13vh, 10rem);
+  border-bottom: 1px solid var(--line);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: var(--gap);
+  align-items: start;
+}
+
+.figureCol {
+  grid-column: 1 / span 5;
+  margin: 0;
+  will-change: transform;
+}
+
+.frame {
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  background: #e9e5e0;
+}
+
+.frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 18%;
+  will-change: transform, clip-path;
+}
+
+.caption {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 0.8rem;
+  font-size: 0.56rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.content {
+  grid-column: 7 / span 6;
+  padding-top: clamp(0rem, 4vw, 3.5rem);
+}
+
+.heading {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(2.6rem, 5.4vw, 4.8rem);
+  line-height: 0.96;
+  letter-spacing: -0.025em;
+}
+
+.headingLine {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.06em;
+  margin-bottom: -0.06em;
+}
+
+.headingLine > span {
+  display: block;
+  will-change: transform;
+}
+
+.lead {
+  margin-top: clamp(1.6rem, 3vw, 2.4rem);
+  max-width: 32rem;
+  font-family: var(--serif);
+  font-size: clamp(1.3rem, 2vw, 1.65rem);
+  line-height: 1.35;
+  letter-spacing: 0;
+  color: var(--ink-soft);
+}
+
+.para {
+  margin-top: 1.35rem;
+  max-width: 34rem;
+  font-size: 0.9rem;
+  line-height: 1.8;
+  color: var(--ink-soft);
+}
+
+.details {
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+}
+
+.facts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: 1px solid var(--line);
+}
+
+.fact {
+  padding: 0.85rem 0.5rem 0.85rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.fact:nth-child(even) {
+  padding-left: 1.25rem;
+  border-left: 1px solid var(--line);
+}
+
+.fact dt {
+  font-size: 0.54rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.25rem;
+}
+
+.fact dd {
+  margin: 0;
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+.recognition {
+  margin-top: 2.2rem;
+}
+
+.recognitionLabel {
+  font-size: 0.54rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.6rem;
+}
+
+.recognitionRow {
+  display: grid;
+  grid-template-columns: 2.6rem 1fr;
+  gap: 1rem;
+  padding: 0.65rem 0;
+  border-top: 1px solid var(--line);
+  font-size: 0.78rem;
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+
+.recognitionRow:last-child {
+  border-bottom: 1px solid var(--line);
+}
+
+.recognitionYear {
+  font-variant-numeric: tabular-nums;
+  color: var(--accent-deep);
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  padding-top: 0.1rem;
+}
+
+@media (max-width: 1100px) {
+  .figureCol {
+    grid-column: 1 / span 5;
+  }
+
+  .content {
+    grid-column: 6 / span 7;
+    padding-top: 0;
+  }
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .figureCol,
+  .content {
+    grid-column: 1 / -1;
+  }
+
+  .frame {
+    aspect-ratio: 4 / 4.6;
+  }
+
+  .content {
+    padding-top: 0;
+  }
+
+  .heading {
+    font-size: clamp(2.4rem, 9vw, 3.6rem);
+  }
+}
+
+@media (max-width: 520px) {
+  .facts {
+    grid-template-columns: 1fr;
+  }
+
+  .fact:nth-child(even) {
+    padding-left: 0;
+    border-left: 0;
+  }
+}

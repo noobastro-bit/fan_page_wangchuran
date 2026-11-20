@@ -1,0 +1,233 @@
+@font-face {
+  font-family: 'Noto Serif SC Display';
+  src: url('/fonts/noto-serif-sc-3chars.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  unicode-range: U+4E00, U+4E0A, U+4E50, U+4E8C, U+4EBA, U+4F53, U+4F55, U+4F59, U+4F60,
+    U+519B, U+5343, U+542C, U+559C, U+5728, U+5B63, U+5C06, U+5C1A, U+5E73-5E74, U+5E86,
+    U+5F55, U+5F71, U+60C5, U+6210-6211, U+660E, U+6708-6709, U+67F3, U+6885, U+695A,
+    U+6B22, U+6D6E, U+6E05, U+706B, U+70DF, U+70FD, U+7136, U+71C3, U+7231, U+7389,
+    U+738B, U+751F, U+795E, U+79D2, U+7B2C, U+7EDF, U+821F, U+82B1, U+8BB0, U+8BF4,
+    U+8D3A, U+8FC7, U+8FD9, U+9065, U+95F4, U+9762, U+98DF, U+9999, U+9AA8;
+}
+
+:root {
+  --bg: #f7f5f2;
+  --ink: #111111;
+  --ink-soft: #3c3a38;
+  --muted: #6f6964;
+  --line: rgba(17, 17, 17, 0.14);
+  --line-strong: rgba(17, 17, 17, 0.28);
+  --accent: #b58d86;
+  --accent-deep: #8c625b;
+  --pad: clamp(1.25rem, 4.5vw, 5rem);
+  --gap: clamp(1rem, 2.2vw, 2.5rem);
+  --max: 1560px;
+  --serif: 'Cormorant Garamond Variable', 'Cormorant Garamond', Georgia, serif;
+  --sans: 'Inter Variable', Inter, system-ui, -apple-system, sans-serif;
+  --zh: 'Noto Serif SC Display', 'Noto Serif SC', 'Songti SC', 'Noto Serif CJK SC',
+    serif;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--bg);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  font-weight: 400;
+  line-height: 1.7;
+  letter-spacing: 0.005em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote {
+  margin: 0;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+input {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+:focus-visible {
+  outline: 1px solid var(--accent-deep);
+  outline-offset: 4px;
+}
+
+main {
+  display: block;
+}
+
+/* --- shared layout helpers ------------------------------------------------ */
+
+.shell {
+  width: 100%;
+  max-width: var(--max);
+  margin-inline: auto;
+  padding-inline: var(--pad);
+}
+
+.eyebrow {
+  font-family: var(--sans);
+  font-size: 0.66rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.zh {
+  font-family: var(--zh);
+  font-weight: 400;
+}
+
+.rule {
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: var(--line);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 200;
+  padding: 0.6rem 0.9rem;
+  background: var(--ink);
+  color: var(--bg);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  transform: translateY(-160%);
+  transition: transform 0.25s var(--ease);
+}
+
+.skip-link:focus-visible {
+  transform: translateY(0);
+}
+
+/* --- loading lock --------------------------------------------------------- */
+
+html.is-loading,
+html.is-loading body {
+  overflow: hidden;
+}
+
+/* --- lenis ---------------------------------------------------------------- */
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+html.has-custom-cursor,
+html.has-custom-cursor a,
+html.has-custom-cursor button {
+  cursor: none;
+}
+
+html.has-custom-cursor input {
+  cursor: text;
+}
+
+/* --- split words ---------------------------------------------------------- */
+
+.sw {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+}
+
+.sw-inner {
+  display: inline-block;
+  will-change: transform;
+}
+
+/* --- reduced motion ------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
